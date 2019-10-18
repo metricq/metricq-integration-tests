@@ -15,6 +15,11 @@ services:
       couchdb_pw: "couchdb-server"
       rpc_url: "amqp://rabbitmq:rabbitmq@rabbitmq-server/"
       data_url: "amqp://rabbitmq:rabbitmq@rabbitmq-server/"
+    depens_on:
+      - rabbitmq-server
+      - couchdb-server
+    networks:
+      - metricq-network
 
   metricq-cxx:
     image: metricq-cxx
@@ -34,3 +39,7 @@ services:
     environment:
       COUCHDB_USER: "admin"
       COUCHDB_PASSWORD: "admin"
+
+networks:
+  metricq-network:
+    driver: bridge
