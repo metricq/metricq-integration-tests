@@ -1,0 +1,34 @@
+version: "3.7"
+services:
+  metricq-python:
+    build:
+      context: https://github.com/metricq/metricq.git#docker-test
+      dockerfile: Dockerfile-python
+
+  metricq-manager:
+    build:
+      context: https://github.com/metricq/metricq-manager.git
+    environment:
+      couchdb_url: "admin"
+      couchdb_user: "admin"
+      couchdb_pw: "couchdb-server"
+      rpc_url: "amqp://rabbitmq:rabbitmq@rabbitmq-server/"
+      data_url: "amqp://rabbitmq:rabbitmq@rabbitmq-server/"
+
+  metricq-cxx:
+    build:
+      context: https://github.com/metricq/metricq.git#docker-test
+      dockerfile: Dockerfile-cxx
+
+  rabbitmq-server:
+    image: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+      RABBITMQ_DEFAULT_VHOST: "/"
+
+  couchdb-server:
+    image: couchdb
+    environment:
+      COUCHDB_USER: "admin"
+      COUCHDB_PASSWORD: "admin"
