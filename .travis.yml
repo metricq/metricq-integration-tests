@@ -11,6 +11,8 @@ addons:
       - cmake
       - cmake-data
       - libssl-dev
+    sources:
+      - ubuntu-toolchain-r-test
 
 services:
   - docker
