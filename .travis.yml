@@ -16,9 +16,7 @@ services:
   - docker
 
 env:
-  - DOCKER_COMPOSE_VERSION=1.24.0
-  - CXX="g++-9"
-  - CC="gcc-9"
+  - DOCKER_COMPOSE_VERSION=1.24.0 CXX="g++-9" CC="gcc-9"
 
 before_install:
   - sudo rm /usr/local/bin/docker-compose
