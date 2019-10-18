@@ -8,7 +8,7 @@ services:
 
   metricq-manager:
     build:
-      context: https://github.com/metricq/metricq-manager.git
+      context: https://github.com/metricq/metricq-manager.git#docker-test
     environment:
       couchdb_url: "admin"
       couchdb_user: "admin"
