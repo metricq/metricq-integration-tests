@@ -2,23 +2,11 @@ language: generic
 
 dist: xenial
 
-compiler: gcc
-addons:
-  apt:
-    packages:
-      - gcc-9
-      - g++-9
-      - cmake
-      - cmake-data
-      - libssl-dev
-    sources:
-      - ubuntu-toolchain-r-test
-
 services:
   - docker
 
 env:
-  - DOCKER_COMPOSE_VERSION=1.24.0 CXX="g++-9" CC="gcc-9"
+  - DOCKER_COMPOSE_VERSION=1.24.0
 
 before_install:
   - sudo rm /usr/local/bin/docker-compose
