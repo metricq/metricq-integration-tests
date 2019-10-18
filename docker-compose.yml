@@ -1,6 +1,7 @@
 version: "3.7"
 services:
   metricq-python:
+    image: metricq-python
     build:
       context: https://github.com/metricq/metricq.git#docker-test
       dockerfile: Dockerfile-python
@@ -16,6 +17,7 @@ services:
       data_url: "amqp://rabbitmq:rabbitmq@rabbitmq-server/"
 
   metricq-cxx:
+    image: metricq-cxx
     build:
       context: https://github.com/metricq/metricq.git#docker-test
       dockerfile: Dockerfile-cxx
