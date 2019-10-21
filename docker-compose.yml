@@ -18,6 +18,8 @@ services:
       couchdb_pw: "admin"
       rpc_url: "amqp://rabbitmq:rabbitmq@rabbitmq-server/"
       data_url: "amqp://rabbitmq:rabbitmq@rabbitmq-server/"
+    volumes:
+      - "./config:/home/metricq/manager/config"
     depends_on:
       - rabbitmq-server
       - couchdb-server
