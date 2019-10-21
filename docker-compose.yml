@@ -12,9 +12,9 @@ services:
     build:
       context: https://github.com/metricq/metricq-manager.git#docker-test
     environment:
-      couchdb_url: "admin"
+      couchdb_url: "http://couchdb-server:5984"
       couchdb_user: "admin"
-      couchdb_pw: "couchdb-server"
+      couchdb_pw: "admin"
       rpc_url: "amqp://rabbitmq:rabbitmq@rabbitmq-server/"
       data_url: "amqp://rabbitmq:rabbitmq@rabbitmq-server/"
     depends_on:
