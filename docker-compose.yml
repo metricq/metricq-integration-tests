@@ -5,6 +5,8 @@ services:
     build:
       context: https://github.com/metricq/metricq.git#docker-test
       dockerfile: Dockerfile-python
+    networks:
+      - metricq-network
 
   metricq-manager:
     build:
@@ -15,7 +17,7 @@ services:
       couchdb_pw: "couchdb-server"
       rpc_url: "amqp://rabbitmq:rabbitmq@rabbitmq-server/"
       data_url: "amqp://rabbitmq:rabbitmq@rabbitmq-server/"
-    depens_on:
+    depends_on:
       - rabbitmq-server
       - couchdb-server
     networks:
@@ -26,6 +28,8 @@ services:
     build:
       context: https://github.com/metricq/metricq.git#docker-test
       dockerfile: Dockerfile-cxx
+    networks:
+      - metricq-network
 
   rabbitmq-server:
     image: rabbitmq
@@ -33,12 +37,16 @@ services:
       RABBITMQ_DEFAULT_USER: "rabbitmq"
       RABBITMQ_DEFAULT_PASS: "rabbitmq"
       RABBITMQ_DEFAULT_VHOST: "/"
+    networks:
+      - metricq-network
 
   couchdb-server:
     image: couchdb
     environment:
       COUCHDB_USER: "admin"
       COUCHDB_PASSWORD: "admin"
+    networks:
+      - metricq-network
 
 networks:
   metricq-network:
