@@ -11,6 +11,7 @@ services:
   metricq-manager:
     build:
       context: https://github.com/metricq/metricq-manager.git#docker-test
+    image: metricq-manager
     environment:
       wait_for_couchdb_url: "couchdb-server:5984"
       couchdb_url: "http://couchdb-server:5984"
