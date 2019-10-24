@@ -16,6 +16,10 @@ before_install:
 
 before_script:
   - docker-compose up -d --build
+  - sleep 30
+
+script:
+  - ./integration_test.sh
 
 after_script:
   - docker-compose down
