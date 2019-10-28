@@ -18,8 +18,10 @@ before_script:
   - docker-compose up -d --build
   - sleep 30
 
-script:
-  - ./integration_test.sh
+jobs:
+  include:
+    - script: ./integration_test1.sh
+    - script: ./integration_test2.sh
 
 after_script:
   - docker-compose down
