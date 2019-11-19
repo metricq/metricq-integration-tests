@@ -3,14 +3,14 @@ services:
   metricq-python:
     image: metricq-python
     build:
-      context: https://github.com/metricq/metricq.git#docker-test
+      context: https://github.com/metricq/metricq.git
       dockerfile: Dockerfile-python
     networks:
       - metricq-network
 
   metricq-manager:
     build:
-      context: https://github.com/metricq/metricq-manager.git#docker-test
+      context: https://github.com/metricq/metricq-manager.git
     image: metricq-manager
     environment:
       wait_for_couchdb_url: "couchdb-server:5984"
@@ -31,7 +31,7 @@ services:
   metricq-cxx:
     image: metricq-cxx
     build:
-      context: https://github.com/metricq/metricq.git#docker-test
+      context: https://github.com/metricq/metricq.git
       dockerfile: Dockerfile-cxx
     networks:
       - metricq-network
